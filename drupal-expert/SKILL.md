@@ -25,6 +25,11 @@ Use this skill for Drupal 10/11 architecture reviews, especially modules built a
 
 - Module `src/`, `config/`, `*.services.yml`, Drush commands, plugin definitions, schema files, and transport or routing configuration.
 
+## Tools
+
+- Run `composer audit` for Drupal/PHP dependency vulnerability checks when dependency security is in scope.
+- Treat audit output as a lead: verify affected package versions, reachability, and whether Drupal core or contrib advisories apply before reporting.
+
 ## Standards
 
 - Messages should be pure DTOs. Pass identifiers and minimal payloads, not loaded entities.

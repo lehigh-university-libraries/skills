@@ -27,6 +27,12 @@ Use this skill for Go backend reviews, especially when API contracts, generated 
 
 - Go source files, handlers, services, storage layers, `.proto` files, `buf.*`, `sqlc.*`, migrations, tests, lint or CI config, and logging or auth paths.
 
+## Tools
+
+- Use `gopls` for Go documentation, symbol information, signatures, and package API details before falling back to web docs.
+- Use `govulncheck ./...` when dependency or reachable vulnerability risk is in scope.
+- Use `gosec ./...` for Go security scanning, especially around file permissions, subprocesses, crypto, tainted inputs, and hardcoded secrets.
+
 ## Standards
 
 - Prefer the standard library unless another dependency clearly earns its cost.

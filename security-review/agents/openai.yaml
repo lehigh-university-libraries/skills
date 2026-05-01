@@ -1,0 +1,4 @@
+interface:
+  display_name: "Security Review"
+  short_description: "Adversarial security review checklist"
+  default_prompt: "Use $security-review to review this change for concrete security risks."
