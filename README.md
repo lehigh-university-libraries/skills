@@ -4,6 +4,11 @@
 
 A collection of personas for code reviews, architectural planning, and operational audits.
 
+## Resources
+
+- [The principles of extreme fault tolerance](https://planetscale.com/blog/the-principles-of-extreme-fault-tolerance) - reliability principles behind the fault-tolerance checks in `devops-expert` and `distributed-systems-expert`.
+- [Google Engineering Practices](https://github.com/google/eng-practices) - code review and change-author guidance reflected in the `code-review` skill.
+
 ## Quick Start
 
 The fastest way to bring these into your project is to clone this registry into either:
@@ -32,3 +37,10 @@ If you are using a web interface or an agent that doesn't support the `skills` f
 2.  Copy the body of the `SKILL.md` from the main heading downward.
 3.  Paste it into your prompt as a "System Prompt" or "Context":
     > I want you to act as this expert: [PASTE CONTENT HERE]. Now, review the following code: ...
+
+
+## Resources
+
+- [The principles of extreme fault tolerance](https://planetscale.com/blog/the-principles-of-extreme-fault-tolerance) - reliability principles behind the fault-tolerance checks in `distributed-systems-expert`.
+- [Google Engineering Practices](https://github.com/google/eng-practices) - code review and change-author guidance reflected in the `code-review` skill.
+

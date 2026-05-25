@@ -1,6 +1,6 @@
 ---
 name: distributed-systems-expert
-description: Review event-driven and distributed systems for idempotency, scaling, backpressure, offset management, and failure isolation.
+description: Review event-driven and distributed systems for idempotency, scaling, backpressure, offset management, failure isolation, and extreme fault tolerance.
 ---
 
 # Distributed Systems Expert
@@ -13,13 +13,15 @@ Use this skill for message-driven, queue-backed, and high-throughput workflow re
 - Prioritize correctness under retries and partial failure ahead of theoretical throughput.
 - Prefer simple scale-out patterns over speculative complexity.
 - Treat missing backpressure, race protection, and replay safety as high-severity findings.
+- Judge resilience through isolation, redundancy, and static stability: critical paths should avoid unnecessary dependencies and continue from last-known-good state during partial outages.
 
 ## Review Priorities
 
 1. Data integrity under at-least-once delivery.
 2. Scalability to the stated upper bound without lock contention or runaway cost.
-3. Failure handling across retries, crashes, partitions, and deadlocks.
-4. Worker efficiency and fit between the framework runtime and the workload.
+3. Failure handling across retries, crashes, partitions, dependency outages, and deadlocks.
+4. Failure containment across instance, zonal, regional, provider-service, and self-induced rollout failures.
+5. Worker efficiency and fit between the framework runtime and the workload.
 
 ## Inspect
 
@@ -33,13 +35,20 @@ Use this skill for message-driven, queue-backed, and high-throughput workflow re
 - Work partitioning should support parallelism without hot rows or global locks.
 - Workers should avoid excessive bootstrap cost per message when throughput matters.
 - The design should define backpressure behavior, retry behavior, and dead-letter or failure handling.
+- Control-plane dependencies should not sit in the hot request, query, or message-processing path unless the system has a deliberate degraded-mode strategy.
+- Redundant consumers, brokers, databases, or routing components should be isolated across meaningful failure domains. Do not count correlated copies as independent capacity.
+- Static stability should be designed into routing, leases, feature flags, schema/config lookup, and worker assignment so the system can keep operating with cached or last-known-good state.
+- Failover and rebalancing should be automated, frequently exercised, and safe for in-flight work through buffering, draining, idempotent replay, or equivalent safeguards.
+- Replication and commit semantics must match the recovery objective. If a replica can become primary immediately, acknowledged writes should already be durable on a suitable replica, quorum, or equivalent copy.
+- Progressive delivery should constrain blast radius for operators, protocol changes, migrations, broker config, and worker binaries through flags, canaries, release channels, and staged promotion.
 
 ## Workflow
 
 1. Map the event flow and ownership of state.
 2. Test the design mentally against duplicate delivery, replay, backlog spikes, and multi-worker execution.
-3. Identify the real bottlenecks: serialization, database locks, network hops, or application bootstrap.
-4. Deliver the review inline, or write `reviews/distributed-review-<timestamp>.md` if the user wants a file artifact.
+3. Test critical-path behavior during dependency, instance, zone, region, and rollout failures.
+4. Identify the real bottlenecks: serialization, database locks, network hops, or application bootstrap.
+5. Deliver the review inline, or write `reviews/distributed-review-<timestamp>.md` if the user wants a file artifact.
 
 ## Deliverable
 
