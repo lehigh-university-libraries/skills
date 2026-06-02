@@ -4,11 +4,6 @@
 
 A collection of personas for code reviews, architectural planning, and operational audits.
 
-## Resources
-
-- [The principles of extreme fault tolerance](https://planetscale.com/blog/the-principles-of-extreme-fault-tolerance) - reliability principles behind the fault-tolerance checks in `devops-expert` and `distributed-systems-expert`.
-- [Google Engineering Practices](https://github.com/google/eng-practices) - code review and change-author guidance reflected in the `code-review` skill.
-
 ## Quick Start
 
 The fastest way to bring these into your project is to clone this registry into either:
@@ -43,4 +38,5 @@ If you are using a web interface or an agent that doesn't support the `skills` f
 
 - [The principles of extreme fault tolerance](https://planetscale.com/blog/the-principles-of-extreme-fault-tolerance) - reliability principles behind the fault-tolerance checks in `distributed-systems-expert`.
 - [Google Engineering Practices](https://github.com/google/eng-practices) - code review and change-author guidance reflected in the `code-review` skill.
-
+- `frontend-tdd` skill is a fork of https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd
+- `shadcn` is a fork of `npx skills add https://github.com/shadcn/ui --skill shadcn`
