@@ -40,6 +40,7 @@ Use this skill for Go backend reviews, especially when API contracts, generated 
 - APIs should be defined in `.proto` or other contract sources, then consumed through generated types rather than hand-rolled duplicates.
 - Use well-known protobuf types appropriately and evaluate schema changes with `buf lint` and `buf breaking` expectations in mind.
 - Keep SQL in `sqlc` query files. Inline SQL in application logic is a finding.
+- Prefer `//go:embed` for static templates, configs, schemas, and other format-sensitive file content instead of large inline string literals.
 - Verify transactions, locking, and query shape for atomicity and performance.
 - Pass `context.Context` through IO-bound and long-running work. Check errors and wrap them with useful context.
 - Use goroutines deliberately, guard shared state, and flag race risks.
@@ -53,6 +54,7 @@ Use this skill for Go backend reviews, especially when API contracts, generated 
 - Use `log/slog` for structured logging and never log secrets, tokens, or sensitive personal data.
 - All exported packages, types, functions, and methods should have doc comments. Internal comments should explain why, not restate what the code does.
 - Prefer table-driven tests when they improve clarity, use `t.Helper()` in shared test helpers, and run `go test -race ./...` when concurrency is in scope.
+- In tests, put format-sensitive inputs and expected outputs in a fixtures directory and read them from files instead of inlining large YAML, SQL, JSON, protobuf, or template strings where indentation and quoting matter.
 - Read `references/go-conventions.md` when you need the full house style for dependencies, API design, errors, concurrency, testing, docs, and linting expectations.
 
 ## Workflow
