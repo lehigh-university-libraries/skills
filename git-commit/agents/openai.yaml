@@ -1,0 +1,4 @@
+interface:
+  display_name: "Git Commit"
+  short_description: "Commit and push workflow with GHAT identity and remote safety"
+  default_prompt: "Use $git-commit to prepare, commit, and push the current changes, preserving existing Git remotes and using a GHAT only through non-persistent auth when I provide one."
