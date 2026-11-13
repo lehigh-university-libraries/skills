@@ -1,0 +1,4 @@
+interface:
+  display_name: "LibTech SET Infrastructure"
+  short_description: "Deploy library applications on SET-managed VMs"
+  default_prompt: "Use $libtech-set-infra to build a Docker Compose deployment for a library application on SET infrastructure."
